@@ -29,7 +29,7 @@ if PI:
 
 # only modify this two values for size adaption!
 PIXEL_X=10
-PIXEL_Y=20
+PIXEL_Y=18
 
 SIZE= 20
 FPS = 15

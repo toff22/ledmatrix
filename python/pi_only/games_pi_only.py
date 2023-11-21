@@ -1042,7 +1042,7 @@ def updateScreen():
         pygame.display.update()
 
 def drawPixel(x,y,color):
-    x=PIXEL_X - x
+    x=PIXEL_X - 1 - x
     if color == BLANK:
         return
     if PI:
@@ -1058,7 +1058,7 @@ def drawPixel(x,y,color):
         pygame.draw.rect(DISPLAYSURF, COLORS[color], (x*SIZE+1, y*SIZE+1, SIZE-2, SIZE-2))
 
 def drawPixelRgb(x,y,r,g,b):
-    x=PIXEL_X - x
+    x=PIXEL_X - 1 - x
     if PI:
         if (x>=0 and y>=0):
             if x%2==1:

@@ -295,7 +295,7 @@ def main():
 
     clearScreen() 
 
-    drawClock(1)
+    # drawClock(1)
     if PI:
         show_message(device,"Let's play",fill="white", font=proportional(CP437_FONT))
 
@@ -303,17 +303,18 @@ def main():
     count = 0
     while True:
         clearScreen()
-        drawPixel(count % PIXEL_X, floor(count / PIXEL_X), RED);
+        # print("drawPixel: {}, {}, {}", count % PIXEL_X, floor(count / PIXEL_X), RED)
+        drawPixelRgb(count % PIXEL_X, floor(count / PIXEL_X), 255, 0, 0)
         if count < PIXEL_X * PIXEL_Y:
             count += 1
-        else
+        else:
             count = 0
         #drawSymbols()
         # if PI:
         #     drawImage('/home/pi/select.bmp')
         # else: 
         #     drawImage('select.bmp')
-        # updateScreen()
+        updateScreen()
         
         # if not PI:
         #     checkForQuit()
@@ -335,30 +336,30 @@ def main():
         #     else:
         #         joystick_cnt+=1
 
-        # pygame.event.pump()
-        # for event in pygame.event.get():
-        #     print("event detected {}".format(event))
-        #     if event.type == pygame.JOYBUTTONDOWN or event.type == KEYDOWN:
-        #         if event.type == pygame.JOYBUTTONDOWN:
-        #             myevent = event.button
-        #         else:
-        #             if event.key in mykeys:
-        #                 myevent = mykeys[event.key]
-        #             else:
-        #                 myevent = -1
-        #         if (myevent == JKEY_B):
-        #           drawClock(1)
-        #         if (myevent == JKEY_A):
-        #           runPongGame()
-        #         if (myevent == JKEY_X):
-        #            runTetrisGame()
-        #         if (myevent == JKEY_Y):
-        #           runSnakeGame() 
-        #         if (myevent == JKEY_START):
-        #           shutdownScreen()
+        pygame.event.pump()
+        for event in pygame.event.get():
+            print("event detected {}".format(event))
+            if event.type == pygame.JOYBUTTONDOWN or event.type == KEYDOWN:
+                if event.type == pygame.JOYBUTTONDOWN:
+                    myevent = event.button
+                else:
+                    if event.key in mykeys:
+                        myevent = mykeys[event.key]
+                    else:
+                        myevent = -1
+                if (myevent == JKEY_B):
+                  drawClock(1)
+                if (myevent == JKEY_A):
+                  runPongGame()
+                if (myevent == JKEY_X):
+                   runTetrisGame()
+                if (myevent == JKEY_Y):
+                  runSnakeGame() 
+                if (myevent == JKEY_START):
+                  shutdownScreen()
                   
-        #     if event.type == pygame.QUIT: # get all the QUIT events
-        #         terminate() # terminate if any QUIT events are present
+            if event.type == pygame.QUIT: # get all the QUIT events
+                terminate() # terminate if any QUIT events are present
 
         time.sleep(.1)
         

@@ -311,7 +311,7 @@ def main():
             count = 0
         #drawSymbols()
         if PI:
-            drawImage('/home/pi/select.bmp')
+            drawImage('/home/christophe/Documents/ledmatrix/python/pi_only/select.bmp')
         else: 
             drawImage('select.bmp')
         updateScreen()

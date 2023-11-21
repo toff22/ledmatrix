@@ -304,37 +304,37 @@ def main():
     while True:
         clearScreen()
         # print("drawPixel: {}, {}, {}", count % PIXEL_X, floor(count / PIXEL_X), RED)
-        drawPixelRgb(count % PIXEL_X, floor(count / PIXEL_X), 255, 0, 0)
+        # drawPixelRgb(count % PIXEL_X, floor(count / PIXEL_X), 255, 0, 0)
         if count < PIXEL_X * PIXEL_Y:
             count += 1
         else:
             count = 0
         #drawSymbols()
-        # if PI:
-        #     drawImage('/home/pi/select.bmp')
-        # else: 
-        #     drawImage('select.bmp')
+        if PI:
+            drawImage('/home/pi/select.bmp')
+        else: 
+            drawImage('select.bmp')
         updateScreen()
         
-        # if not PI:
-        #     checkForQuit()
+        if not PI:
+            checkForQuit()
 
-        # #check if joystick is still connected
-        # if PI:    
-        #     if joystick_cnt==50:
-        #         joystick_cnt=0
-        #         pygame.joystick.quit()
-        #         pygame.joystick.init()
-        #         try:
-        #             joystick = pygame.joystick.Joystick(0) # create a joystick instance
-        #             joystick.init() # init instance
-        #             # print("Initialized joystick: {}".format(joystick.get_name()))
-        #             joystick_detected = True
-        #         except pygame.error:
-        #             print("no joystick found.")
-        #             joystick_detected = False
-        #     else:
-        #         joystick_cnt+=1
+        #check if joystick is still connected
+        if PI:    
+            if joystick_cnt==50:
+                joystick_cnt=0
+                pygame.joystick.quit()
+                pygame.joystick.init()
+                try:
+                    joystick = pygame.joystick.Joystick(0) # create a joystick instance
+                    joystick.init() init instance
+                    print("Initialized joystick: {}".format(joystick.get_name()))
+                    joystick_detected = True
+                except pygame.error:
+                    print("no joystick found.")
+                    joystick_detected = False
+            else:
+                joystick_cnt+=1
 
         pygame.event.pump()
         for event in pygame.event.get():

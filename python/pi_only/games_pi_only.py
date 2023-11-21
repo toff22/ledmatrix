@@ -300,59 +300,65 @@ def main():
         show_message(device,"Let's play",fill="white", font=proportional(CP437_FONT))
 
 
+    count = 0
     while True:
         clearScreen()
+        drawPixel(count % PIXEL_X, floor(count / PIXEL_X), RED);
+        if count < PIXEL_X * PIXEL_Y:
+            count += 1
+        else
+            count = 0
         #drawSymbols()
-        if PI:
-            drawImage('/home/christophe/Documents/ledmatrix/python/pi_only/select.bmp')
-        else: 
-            drawImage('select.bmp')
-        updateScreen()
+        # if PI:
+        #     drawImage('/home/pi/select.bmp')
+        # else: 
+        #     drawImage('select.bmp')
+        # updateScreen()
         
-        if not PI:
-            checkForQuit()
+        # if not PI:
+        #     checkForQuit()
 
-        #check if joystick is still connected
-        if PI:    
-            if joystick_cnt==50:
-                joystick_cnt=0
-                pygame.joystick.quit()
-                pygame.joystick.init()
-                try:
-                    joystick = pygame.joystick.Joystick(0) # create a joystick instance
-                    joystick.init() # init instance
-                    # print("Initialized joystick: {}".format(joystick.get_name()))
-                    joystick_detected = True
-                except pygame.error:
-                    print("no joystick found.")
-                    joystick_detected = False
-            else:
-                joystick_cnt+=1
+        # #check if joystick is still connected
+        # if PI:    
+        #     if joystick_cnt==50:
+        #         joystick_cnt=0
+        #         pygame.joystick.quit()
+        #         pygame.joystick.init()
+        #         try:
+        #             joystick = pygame.joystick.Joystick(0) # create a joystick instance
+        #             joystick.init() # init instance
+        #             # print("Initialized joystick: {}".format(joystick.get_name()))
+        #             joystick_detected = True
+        #         except pygame.error:
+        #             print("no joystick found.")
+        #             joystick_detected = False
+        #     else:
+        #         joystick_cnt+=1
 
-        pygame.event.pump()
-        for event in pygame.event.get():
-            # print("event detected {}".format(event))
-            if event.type == pygame.JOYBUTTONDOWN or event.type == KEYDOWN:
-                if event.type == pygame.JOYBUTTONDOWN:
-                    myevent = event.button
-                else:
-                    if event.key in mykeys:
-                        myevent = mykeys[event.key]
-                    else:
-                        myevent = -1
-                if (myevent == JKEY_B):
-                  drawClock(1)
-                if (myevent == JKEY_A):
-                  runPongGame()
-                if (myevent == JKEY_X):
-                   runTetrisGame()
-                if (myevent == JKEY_Y):
-                  runSnakeGame() 
-                if (myevent == JKEY_START):
-                  shutdownScreen()
+        # pygame.event.pump()
+        # for event in pygame.event.get():
+        #     print("event detected {}".format(event))
+        #     if event.type == pygame.JOYBUTTONDOWN or event.type == KEYDOWN:
+        #         if event.type == pygame.JOYBUTTONDOWN:
+        #             myevent = event.button
+        #         else:
+        #             if event.key in mykeys:
+        #                 myevent = mykeys[event.key]
+        #             else:
+        #                 myevent = -1
+        #         if (myevent == JKEY_B):
+        #           drawClock(1)
+        #         if (myevent == JKEY_A):
+        #           runPongGame()
+        #         if (myevent == JKEY_X):
+        #            runTetrisGame()
+        #         if (myevent == JKEY_Y):
+        #           runSnakeGame() 
+        #         if (myevent == JKEY_START):
+        #           shutdownScreen()
                   
-            if event.type == pygame.QUIT: # get all the QUIT events
-                terminate() # terminate if any QUIT events are present
+        #     if event.type == pygame.QUIT: # get all the QUIT events
+        #         terminate() # terminate if any QUIT events are present
 
         time.sleep(.1)
         

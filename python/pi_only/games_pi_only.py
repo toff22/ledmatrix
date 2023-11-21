@@ -327,7 +327,7 @@ def main():
                 pygame.joystick.init()
                 try:
                     joystick = pygame.joystick.Joystick(0) # create a joystick instance
-                    joystick.init() init instance
+                    joystick.init() # init instance
                     print("Initialized joystick: {}".format(joystick.get_name()))
                     joystick_detected = True
                 except pygame.error:

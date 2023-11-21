@@ -278,7 +278,7 @@ def main():
     else:
         device.contrast(200)
         pygame.init()
-        drawImage('/home/christophe/Documents/ledmatrix/python/pi_onlypi.bmp')
+        drawImage('/home/christophe/Documents/ledmatrix/python/pi_only/pi.bmp')
         pygame.joystick.init()
         while joystick_detected==False:
             show_message(device,"Waiting for controller...",fill="white", font=proportional(CP437_FONT), scroll_delay=0.01)
@@ -304,7 +304,7 @@ def main():
         clearScreen()
         #drawSymbols()
         if PI:
-            drawImage('/home/christophe/Documents/ledmatrix/python/pi_onlyselect.bmp')
+            drawImage('/home/christophe/Documents/ledmatrix/python/pi_only/select.bmp')
         else: 
             drawImage('select.bmp')
         updateScreen()
@@ -566,9 +566,9 @@ def runSnakeGame():
     direction = RIGHT
     score = 0
     
-    if os.path.isfile('/home/christophe/Documents/ledmatrix/python/pi_onlyhs_snake.p')==True:  
+    if os.path.isfile('/home/christophe/Documents/ledmatrix/python/pi_only/hs_snake.p')==True:  
         try:
-           highscore = pickle.load(open("/home/christophe/Documents/ledmatrix/python/pi_onlyhs_snake.p","rb"))
+           highscore = pickle.load(open("/home/christophe/Documents/ledmatrix/python/pi_only/hs_snake.p","rb"))
         except EOFError:
            highscore = 0
     else:
@@ -628,7 +628,7 @@ def runSnakeGame():
             if score > highscore:
                 highscore = score
                 if PI:
-                    pickle.dump(highscore, open("/home/christophe/Documents/ledmatrix/python/pi_onlyhs_snake.p", "wb"))
+                    pickle.dump(highscore, open("/home/christophe/Documents/ledmatrix/python/pi_only/hs_snake.p", "wb"))
                     show_message(device,"New Highscore !!!",fill="white", font=proportional(CP437_FONT), scroll_delay=0.01)
             return # game over
         for wormBody in wormCoords[1:]:
@@ -637,7 +637,7 @@ def runSnakeGame():
                 if score > highscore:
                     highscore = score
                     if PI:
-                        pickle.dump(highscore, open("/home/christophe/Documents/ledmatrix/python/pi_onlyhs_snake.p", "wb"))
+                        pickle.dump(highscore, open("/home/christophe/Documents/ledmatrix/python/pi_only/hs_snake.p", "wb"))
                         show_message(device,"New Highscore !!!",fill="white", font=proportional(CP437_FONT), scroll_delay=0.01)
                 return # game over
 
@@ -698,9 +698,9 @@ def runTetrisGame():
     oldpiece = 10
     lines = 0
     level, fallFreq = calculateLevelAndFallFreq(lines)
-    if os.path.isfile('/home/christophe/Documents/ledmatrix/python/pi_onlyhs_tetris.p')==True:  
+    if os.path.isfile('/home/christophe/Documents/ledmatrix/python/pi_only/hs_tetris.p')==True:  
         try:
-           highscore = pickle.load(open("/home/christophe/Documents/ledmatrix/python/pi_onlyhs_tetris.p","rb"))
+           highscore = pickle.load(open("/home/christophe/Documents/ledmatrix/python/pi_only/hs_tetris.p","rb"))
         except EOFError:
            highscore = 0
     else:
@@ -727,7 +727,7 @@ def runTetrisGame():
                 if score > highscore:
                     highscore = score
                     if PI:
-                        pickle.dump(highscore, open("/home/christophe/Documents/ledmatrix/python/pi_onlyhs_tetris.p", "wb"))
+                        pickle.dump(highscore, open("/home/christophe/Documents/ledmatrix/python/pi_only/hs_tetris.p", "wb"))
                         show_message(device,"New Highscore !!!",fill="white", font=proportional(CP437_FONT), scroll_delay=0.01)
                 
                 return # can't fit a new piece on the board, so game over
@@ -962,7 +962,7 @@ def shutdownScreen():
     if PI:
         device.clear();
         device.show();
-        drawImage('/home/christophe/Documents/ledmatrix/python/pi_onlyshutdown.bmp')
+        drawImage('/home/christophe/Documents/ledmatrix/python/pi_only/shutdown.bmp')
         show_message(device,"Press Select to shutdown!",fill="white", font=proportional(CP437_FONT), scroll_delay=0.01)
     else:
         drawImage('shutdown.bmp')

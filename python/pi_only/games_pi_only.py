@@ -744,29 +744,29 @@ def runTetrisGame():
         pygame.event.pump()
         for event in pygame.event.get():
             print("event detected {}".format(event))
-            if event.type == pygame.JOYAXISMOTION:
-              axis = event.axis
-              val = round(event.value)
-              if (axis == 0 and val == 0):
+            if event.type == pygame.JOYHATMOTION:
+              x = event.value[0]
+              y = event.value[1]
+              if (x == 0 and y == 0):
                 # no motion or down motion
                 movingLeft = movingRight = False
               
-              if (axis == 1 and val == 0) :
+              if (x == 0 and y == 1) :
                 movingDown = False
 
-              if (axis==0 and val== -1) and isValidPosition(board, fallingPiece, adjX=-1):
+              if (x == -1 and y == 0) and isValidPosition(board, fallingPiece, adjX=-1):
                 fallingPiece['x'] -= 1
                 movingLeft = True
                 movingRight = False
                 lastMoveSidewaysTime = time.time()
 
-              if (axis == 0 and val== 1) and isValidPosition(board, fallingPiece, adjX=1):
+              if (x == 1 and y == 0) and isValidPosition(board, fallingPiece, adjX=1):
                 fallingPiece['x'] += 1
                 movingLeft = False
                 movingRight = True
                 lastMoveSidewaysTime = time.time()
 
-              if (axis==1 and val == 1):
+              if (x == 0 and y == -1):
                 movingDown = True
                 if isValidPosition(board, fallingPiece, adjY=1):
                     fallingPiece['y'] += 1

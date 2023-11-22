@@ -743,7 +743,7 @@ def runTetrisGame():
 
         pygame.event.pump()
         for event in pygame.event.get():
-            # print("event detected {}".format(event))
+            print("event detected {}".format(event))
             if event.type == pygame.JOYAXISMOTION:
               axis = event.axis
               val = round(event.value)

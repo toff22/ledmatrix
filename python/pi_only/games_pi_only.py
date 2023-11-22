@@ -772,10 +772,10 @@ def runTetrisGame():
                     fallingPiece['y'] += 1
                 lastMoveDownTime = time.time()
 
-              if (axis==1 and val == -1):
-                 fallingPiece['rotation'] = (fallingPiece['rotation'] + 1) % len(PIECES[fallingPiece['shape']])
-                 if not isValidPosition(board, fallingPiece):
-                      fallingPiece['rotation'] = (fallingPiece['rotation'] - 1) % len(PIECES[fallingPiece['shape']])
+              # if (axis==1 and val == -1):
+              #    fallingPiece['rotation'] = (fallingPiece['rotation'] + 1) % len(PIECES[fallingPiece['shape']])
+              #    if not isValidPosition(board, fallingPiece):
+              #        fallingPiece['rotation'] = (fallingPiece['rotation'] - 1) % len(PIECES[fallingPiece['shape']])
 
             if event.type == pygame.KEYDOWN:   
 
